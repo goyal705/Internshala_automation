@@ -102,7 +102,6 @@ portpicker==1.2.0
 prompt-toolkit==1.0.18
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-PyAudio @ file:///C:/Users/hp/Downloads/PyAudio-0.2.11-cp39-cp39-win_amd64.whl
 pycparser==2.21
 pygame==2.0.0
 Pygments==2.12.0
