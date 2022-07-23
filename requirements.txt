@@ -89,8 +89,6 @@ python-dotenv==0.20.0
 python-telegram-bot==13.13
 python-vlc==3.0.12118
 pyttsx3==2.90
-pytube==11.0.1
-pywin32==300
 pywin32-ctypes==0.2.0
 pyzmq==23.2.0
 reportlab==3.6.1
