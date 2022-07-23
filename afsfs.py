@@ -1,6 +1,4 @@
 from selenium import webdriver
-# from selenium.webdriver.chrome.options import Options
-# from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -13,25 +11,20 @@ op.add_argument('--no-sandbox')
 op.add_argument('--disable-dev-shmcd -usage')
 driver=webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'),options=op)
 
-# options = Options()
-# options.headless = True
-# options.add_argument("--window-size=1920,1200")
-# DRIVER_PATH = 'C:\\Users\\hp\\Desktop\\WebScrapping\\chromedriver'
-# driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-
 telegram_auth_token='5485600475:AAGZZZee14pCFfiCDnTiGR0dce1txRN5E0Y'
 telegram_grp_id='internship_intershala'
 
 urls=['https://internshala.com/internships/accounts-internship/','https://internshala.com/internships/analytics-internship/','https://internshala.com/internships/android-app-development-internship/','https://internshala.com/internships/angular.js-development-internship/','https://internshala.com/internships/backend-development-internship/','https://internshala.com/jobs/accounts-jobs/','https://internshala.com/jobs/analytics-jobs/','https://internshala.com/jobs/android-app-development-jobs/','https://internshala.com/jobs/angular.js-development-jobs/','https://internshala.com/jobs/backend-development-jobs/']
 
-# results=[]
 while True:
+    time.sleep(3600)
     for url in urls:
         try:
             driver.get(url)
             soup=BeautifulSoup(driver.page_source,'html5lib')
             lists=soup.find('div',attrs={'id':'internship_list_container_1'})
             if lists!=None:
+                i=1
                 for content in lists.find_all('div',attrs={'class':'container-fluid individual_internship visibilityTrackerItem'}):
                     result={}
                     result['Link']='https://www.internshala.com'+ content.find('a',attrs={'class':'view_detail_button'})['href']
@@ -53,8 +46,10 @@ while True:
                         n=keys[3].replace('&','')
                         message=f'\nTitle: {keys[1]}'+'\n'+f'Location: {keys[2]}'+'\n'+f'Company: {n}'+'\n'+f'Duration: {keys[4]}'+ '\n'+f'Stipend: {keys[5]}'+'\n'+f'Duration: {keys[6]}'+'\n'+f'Link: {keys[0]}'
                     
-                    telegram_api_url=f"https://api.telegram.org/bot{telegram_auth_token}/sendMessage?chat_id=@{telegram_grp_id}&text={message}"
-                    tel_resp=requests.get(telegram_api_url)
-                    time.sleep(10)
+                    if i<=5:
+                        telegram_api_url=f"https://api.telegram.org/bot{telegram_auth_token}/sendMessage?chat_id=@{telegram_grp_id}&text={message}"
+                        tel_resp=requests.get(telegram_api_url)
+                        time.sleep(60)
+                    i+=1    
         except Exception as e:
             continue
