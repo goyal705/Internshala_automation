@@ -17,7 +17,6 @@ telegram_grp_id='internship_intershala'
 urls=['https://internshala.com/internships/accounts-internship/','https://internshala.com/internships/analytics-internship/','https://internshala.com/internships/android-app-development-internship/','https://internshala.com/internships/angular.js-development-internship/','https://internshala.com/internships/backend-development-internship/','https://internshala.com/jobs/accounts-jobs/','https://internshala.com/jobs/analytics-jobs/','https://internshala.com/jobs/android-app-development-jobs/','https://internshala.com/jobs/angular.js-development-jobs/','https://internshala.com/jobs/backend-development-jobs/']
 
 while True:
-    time.sleep(3600)
     for url in urls:
         try:
             driver.get(url)
