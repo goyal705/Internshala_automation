@@ -1,1 +1,1 @@
-web: python afsfs.py --bind :$PORT
+worker: python afsfs.py --bind :$PORT
