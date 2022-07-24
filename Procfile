@@ -1,1 +1,1 @@
-worker: python afsfs.py
+web: python afsfs.py
