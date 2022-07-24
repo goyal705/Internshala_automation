@@ -1,2 +1,2 @@
 web: python afsfs.py
---port=$PORT
+web: gunicorn --bind :$PORT --workers 1 --threads 10 --timeout 0 afsfs.py
