@@ -47,8 +47,6 @@ while True:
                     
                     if i<=5:
                         telegram_api_url=f"https://api.telegram.org/bot{telegram_auth_token}/sendMessage?chat_id=@{telegram_grp_id}&text={message}"
-                        tel_resp=requests.get(telegram_api_url)
-                        time.sleep(60)
-                    i+=1    
+                        tel_resp=requests.get(telegram_api_url)    
         except Exception as e:
             continue
